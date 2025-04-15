@@ -1,24 +1,23 @@
-
 # 🧠 Customer Segmentation Dashboard
 
-This project is a **Streamlit-powered web dashboard** for customer segmentation using unsupervised learning (K-Means clustering). It segments users based on demographic and behavioral features to help businesses identify target customer groups, enhance personalization, and support strategic decision-making.
+This project presents an end-to-end customer segmentation workflow using **unsupervised learning (K-Means)**, complete with **exploratory data analysis (EDA)**, **dimensionality reduction**, and a **Streamlit-powered dashboard**. It aims to support marketing and business strategies by identifying distinct customer profiles from demographic and behavioral data.
 
 ---
 
 ## 📊 Features
 
-- Upload and visualize customer data
-- Automatically segment customers using K-Means
-- View clusters in 2D using PCA projection
-- Interactive cluster profile table
-- Download segmented dataset as CSV
+- Full exploratory data analysis (EDA)
+- K-Means clustering with PCA visualization
+- Segment profiling and insight generation
+- Interactive Streamlit dashboard
+- CSV export of labeled segments
 
 ---
 
 ## 📁 Project Structure
 
 ```
-customer-segmentation-app/
+customer-segmentation-dashboard/
 ├── app.py                         # Streamlit app
 ├── data/
 │   └── customer_segments_labeled.csv  # Input data
@@ -27,46 +26,48 @@ customer-segmentation-app/
 ├── README.md
 ├── requirements.txt              # Libraries used
 └── visuals/
-    └── elbow_plot.png            # Optional elbow plot
+    ├── eda_age_distribution.png
+    ├── eda_income_distribution.png
+    ├── eda_spending_score.png
+    ├── category_distribution.png
+    ├── gender_distribution.png
+    └── elbow_plot.png
 ```
 
 ---
 
-## 🔍 Data Description
+## 🔍 Exploratory Data Analysis (EDA)
 
-Sample dataset includes the following fields:
-- `age`
-- `gender`
-- `income`
-- `spending_score`
-- `membership_years`
-- `purchase_frequency`
-- `last_purchase_amount`
-- `preferred_category`
+Here are sample EDA plots generated from the dataset:
 
----
+### Age Distribution
+![Age Distribution](visuals/eda_age_distribution.png)
 
-## 📌 How to Run Locally
+### Income Distribution
+![Income Distribution](visuals/eda_income_distribution.png)
 
-1. Clone this repository:
-```bash
-git clone https://github.com/your-username/customer-segmentation-app.git
-cd customer-segmentation-app
-```
+### Spending Score Distribution
+![Spending Score](visuals/eda_spending_score.png)
 
-2. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+### Gender Distribution
+![Gender Distribution](visuals/gender_distribution.png)
 
-3. Run the app:
-```bash
-streamlit run app.py
-```
+### Preferred Category Distribution
+![Preferred Category](visuals/category_distribution.png)
 
 ---
 
-## 💡 Cluster Insights Example
+## 🧪 Clustering Process
+
+- **StandardScaler** used for numerical features
+- **OneHotEncoding** for categorical features (`gender`, `preferred_category`)
+- **PCA** applied for 2D visualization
+- **Elbow method** used to find optimal number of clusters
+![Elbow Plot](visuals/elbow_plot.png)
+
+---
+
+## 📌 Segment Insights
 
 | Segment | Key Traits                                | Category Focus     | Suggested Strategy                        |
 |---------|--------------------------------------------|--------------------|--------------------------------------------|
@@ -77,13 +78,24 @@ streamlit run app.py
 
 ---
 
-## 📸 Screenshots
+## ▶️ Run Locally
 
-*(Add screenshots of the app interface here)*
+```bash
+git clone https://github.com/your-username/customer-segmentation-dashboard.git
+cd customer-segmentation-dashboard
+pip install -r requirements.txt
+streamlit run app.py
+```
 
 ---
 
-## 📬 Contact
+## 📸 Dashboard Preview
+
+*(Insert screenshot of the live Streamlit dashboard)*
+
+---
+
+## 📬 Author
 
 Konlavach Mengsuwan  
 📧 [YourEmail@example.com]  
