@@ -42,17 +42,20 @@ customer-segmentation-dashboard/
 ## 🔍 Exploratory Data Analysis (EDA)
 
 ### 📈 Age Distribution
-![Age Distribution](visuals/eda_age_distribution.png)
+![Age Distribution]![1_Distribution of Age](https://github.com/user-attachments/assets/64bc05ce-4a11-45f7-a190-3ade16500045)
+
 - Customers range from early 20s to over 60 years old.
 - Slight concentration in the 20–40 age range, important for lifestyle targeting.
 
 ### 💰 Income Distribution
-![Income Distribution](visuals/eda_income_distribution.png)
+![Income Distribution]![2_Distribution of income](https://github.com/user-attachments/assets/e510f0bc-391f-4f3b-80fc-4a178d34ac75)
+
 - Right-skewed distribution with most customers earning less than 100,000 EUR.
 - Helps in designing price tiers and promotional strategies.
 
 ### 💳 Spending Score Distribution
-![Spending Score](visuals/eda_spending_score.png)
+![Spending Score]![3_Distribution of Spending_score](https://github.com/user-attachments/assets/0282831e-1d0f-4fba-97ca-2d2bf473b2db)
+
 - Bimodal tendency suggests at least two spending behavior types—ideal for clustering.
 
 ---
@@ -60,12 +63,14 @@ customer-segmentation-dashboard/
 ## 🧑‍🤝‍🧑 Categorical Feature Distribution
 
 ### 👥 Gender Distribution
-![Gender Distribution](visuals/gender_distribution.png)
+![Gender Distribution]![7_Gender Distribution](https://github.com/user-attachments/assets/d304719f-05d7-4684-87aa-638ff3f16260)
+
 - A balanced mix of male and female customers.
 - A smaller group identifies as "Other".
 
 ### 🛍️ Preferred Product Category
-![Preferred Product Category](visuals/category_distribution.png)
+![Preferred Product Category]![8_Preferred Product Category Distribution](https://github.com/user-attachments/assets/7ec1fbad-ac8e-4e4e-aeaa-5d585f8d0c41)
+
 - Popular categories include Groceries, Clothing, and Electronics.
 - Less interest in Automotive and Books—useful for product placement.
 
@@ -74,7 +79,8 @@ customer-segmentation-dashboard/
 ## 📉 Behavioral Relationship Plots
 
 ### 💡 Income vs Spending Score by Gender
-![Income vs Spending Score by Gender](visuals/income_vs_spending_by_gender.png)
+![Income vs Spending Score by Gender]![9_Income VS Spending Score By Gender](https://github.com/user-attachments/assets/556c1950-1d88-43e6-98e0-3eb304cbe032)
+
 - Shows that income does not always correlate with spending.
 - Some low-income, high-spending customers suggest emotional or urgent purchases.
 - Gender-wise behavior is distributed evenly.
@@ -84,7 +90,8 @@ customer-segmentation-dashboard/
 ## 🔢 Optimal Cluster Selection
 
 ### 🔍 Elbow Method for K
-![Elbow Plot](visuals/elbow_plot.png)
+![Elbow Plot]![10_Elbow Method for Optimal K](https://github.com/user-attachments/assets/142c5a89-f08f-40db-821c-35134610daae)
+
 - Elbow occurs around k = 3 or 4.
 - We selected **k = 4** for meaningful and interpretable segmentation.
 
@@ -93,7 +100,8 @@ customer-segmentation-dashboard/
 ## 🎯 Final Clusters
 
 ### 📌 Customer Segments Visualized in 2D (PCA)
-![PCA Clustering](visuals/pca_cluster_plot.png)
+![PCA Clustering]![11_Customer Segments Visuliazed in 2D (PCA)](https://github.com/user-attachments/assets/9809501e-9813-45d6-9a51-a173c7384899)
+
 - PCA reduces multi-dimensional data into 2 components.
 - Clusters appear well-separated in 2D space, validating K-Means.
 
