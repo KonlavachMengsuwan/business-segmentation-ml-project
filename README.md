@@ -1,124 +1,127 @@
 # 🧠 Customer Segmentation Dashboard
 
-This project presents an end-to-end customer segmentation analysis using unsupervised machine learning (**K-Means clustering**). It includes a complete exploratory data analysis (EDA), clustering with dimensionality reduction, business insight extraction, and an interactive **Streamlit dashboard**.
+This repository showcases a complete customer segmentation project using unsupervised machine learning (**K-Means clustering**) and Python. It walks through the entire process — from EDA and visualization to clustering and deploying a web dashboard using **Streamlit**.
 
 ---
 
-## 📊 Features
+## 📦 Dataset Preview
 
-- Detailed exploratory data analysis (EDA)
-- Visual insights into customer demographics and behaviors
-- K-Means clustering with PCA for dimensionality reduction
-- Cluster profiling and business-oriented interpretation
-- Interactive dashboard using Streamlit
-- Exportable labeled dataset
+The dataset includes demographic and behavioral features of 1,000 customers.
+
+| id | age | gender | income | spending_score | membership_years | purchase_frequency | preferred_category | last_purchase_amount |
+|----|-----|--------|--------|----------------|-------------------|---------------------|---------------------|----------------------|
+| 1  | 38  | Female | 99342  | 90             | 3                 | 24                  | Groceries           | 113.53               |
+| 2  | 21  | Female | 78852  | 60             | 2                 | 42                  | Sports              | 41.93                |
 
 ---
 
-## 📁 Project Structure
+## 🛠️ Python Code and Visuals
 
-```
-customer-segmentation-dashboard/
-├── app.py
-├── data/
-│   └── customer_segments_labeled.csv
-├── summary/
-│   └── customer_segmentation_summary.md
-├── visuals/
-│   ├── eda_age_distribution.png
-│   ├── eda_income_distribution.png
-│   ├── eda_spending_score.png
-│   ├── gender_distribution.png
-│   ├── category_distribution.png
-│   ├── income_vs_spending_by_gender.png
-│   ├── elbow_plot.png
-│   └── pca_cluster_plot.png
-├── README.md
-└── requirements.txt
+### 1. 📊 Age Distribution
+
+```python
+sns.histplot(df['age'], kde=True, bins=30)
+plt.title('Age Distribution')
 ```
 
----
-
-## 🔍 Exploratory Data Analysis (EDA)
-
-### 📈 Age Distribution
-![Age Distribution]![1_Distribution of Age](https://github.com/user-attachments/assets/64bc05ce-4a11-45f7-a190-3ade16500045)
-
-- Customers range from early 20s to over 60 years old.
-- Slight concentration in the 20–40 age range, important for lifestyle targeting.
-
-### 💰 Income Distribution
-![Income Distribution]![2_Distribution of income](https://github.com/user-attachments/assets/e510f0bc-391f-4f3b-80fc-4a178d34ac75)
-
-- Right-skewed distribution with most customers earning less than 100,000 EUR.
-- Helps in designing price tiers and promotional strategies.
-
-### 💳 Spending Score Distribution
-![Spending Score]![3_Distribution of Spending_score](https://github.com/user-attachments/assets/0282831e-1d0f-4fba-97ca-2d2bf473b2db)
-
-- Bimodal tendency suggests at least two spending behavior types—ideal for clustering.
+![1_Distribution of Age](https://github.com/user-attachments/assets/ef79960a-a219-4a8b-b988-c79b19f6b581)
 
 ---
 
-## 🧑‍🤝‍🧑 Categorical Feature Distribution
+### 2. 💰 Income Distribution
 
-### 👥 Gender Distribution
-![Gender Distribution]![7_Gender Distribution](https://github.com/user-attachments/assets/d304719f-05d7-4684-87aa-638ff3f16260)
+```python
+sns.histplot(df['income'], kde=True, bins=30)
+plt.title('Income Distribution')
+```
 
-- A balanced mix of male and female customers.
-- A smaller group identifies as "Other".
-
-### 🛍️ Preferred Product Category
-![Preferred Product Category]![8_Preferred Product Category Distribution](https://github.com/user-attachments/assets/7ec1fbad-ac8e-4e4e-aeaa-5d585f8d0c41)
-
-- Popular categories include Groceries, Clothing, and Electronics.
-- Less interest in Automotive and Books—useful for product placement.
+![2_Distribution of income](https://github.com/user-attachments/assets/981049bb-9352-425a-b7a9-7b099592f8fc)
 
 ---
 
-## 📉 Behavioral Relationship Plots
+### 3. 💳 Spending Score Distribution
 
-### 💡 Income vs Spending Score by Gender
-![Income vs Spending Score by Gender]![9_Income VS Spending Score By Gender](https://github.com/user-attachments/assets/556c1950-1d88-43e6-98e0-3eb304cbe032)
+```python
+sns.histplot(df['spending_score'], kde=True, bins=30)
+plt.title('Spending Score Distribution')
+```
 
-- Shows that income does not always correlate with spending.
-- Some low-income, high-spending customers suggest emotional or urgent purchases.
-- Gender-wise behavior is distributed evenly.
-
----
-
-## 🔢 Optimal Cluster Selection
-
-### 🔍 Elbow Method for K
-![Elbow Plot]![10_Elbow Method for Optimal K](https://github.com/user-attachments/assets/142c5a89-f08f-40db-821c-35134610daae)
-
-- Elbow occurs around k = 3 or 4.
-- We selected **k = 4** for meaningful and interpretable segmentation.
+![3_Distribution of Spending_score](https://github.com/user-attachments/assets/b5f7092c-5a5f-4685-baa6-2091297579fa)
 
 ---
 
-## 🎯 Final Clusters
+### 4. 👥 Gender Distribution
 
-### 📌 Customer Segments Visualized in 2D (PCA)
-![PCA Clustering]![11_Customer Segments Visuliazed in 2D (PCA)](https://github.com/user-attachments/assets/9809501e-9813-45d6-9a51-a173c7384899)
+```python
+sns.countplot(x='gender', data=df)
+plt.title('Gender Distribution')
+```
 
-- PCA reduces multi-dimensional data into 2 components.
-- Clusters appear well-separated in 2D space, validating K-Means.
-
----
-
-## 🧪 Segment Profiles & Business Insights
-
-| Cluster | Traits                                     | Top Category      | Gender | Strategy                                    |
-|---------|---------------------------------------------|-------------------|--------|---------------------------------------------|
-| 0       | Older, loyal, high spenders                 | Home & Garden     | Other  | Gardening campaigns, loyalty offers         |
-| 1       | Young, mid-income, frequent buyers          | Home & Garden     | Male   | Smart home bundles, subscription offers     |
-| 2       | Mature, lower frequency, sports-focused     | Sports            | Female | Re-engagement emails, loyalty programs      |
-| 3       | Young tech-savvy, highest purchase frequency| Electronics       | Male   | Premium products, early access deals        |
+![7_Gender Distribution](https://github.com/user-attachments/assets/47dde408-9a6f-49ce-9b0e-754de401aa49)
 
 ---
 
-## ▶️ Run Locally
+### 5. 🛍️ Preferred Product Category
+
+```python
+sns.countplot(x='preferred_category', data=df)
+plt.title('Preferred Product Category')
+plt.xticks(rotation=45)
+```
+
+![8_Preferred Product Category Distribution](https://github.com/user-attachments/assets/d43bbee8-909e-497c-8f15-d95f4a4cb5b6)
+
+---
+
+### 6. 📉 Income vs Spending Score by Gender
+
+```python
+sns.scatterplot(data=df, x='income', y='spending_score', hue='gender')
+plt.title('Income vs Spending Score by Gender')
+```
+
+![9_Income VS Spending Score By Gender](https://github.com/user-attachments/assets/dd8ddb33-e7b5-4120-a4a0-169121812453)
+
+---
+
+### 7. 🔍 Elbow Method for Optimal Clusters (K)
+
+```python
+inertia = []
+for k in range(1, 11):
+    kmeans = KMeans(n_clusters=k, random_state=42, n_init=10)
+    kmeans.fit(data_scaled)
+    inertia.append(kmeans.inertia_)
+```
+
+![10_Elbow Method for Optimal K](https://github.com/user-attachments/assets/cd46c2a4-bbf7-4b33-bb89-662ff17c1a0b)
+
+---
+
+### 8. 🧠 Clusters in 2D (PCA)
+
+```python
+pca = PCA(n_components=2)
+components = pca.fit_transform(data_scaled)
+sns.scatterplot(x=components[:, 0], y=components[:, 1], hue=cluster_labels)
+```
+
+![11_Customer Segments Visuliazed in 2D (PCA)](https://github.com/user-attachments/assets/37180ecc-d114-4a81-ba98-28059b1499d1)
+
+---
+
+## 📋 Cluster Summary Table
+
+| Cluster | Avg Age | Income | Spending Score | Top Category | Gender |
+|---------|---------|--------|----------------|---------------|--------|
+| 0       | 56      | 79k    | 49             | Home & Garden | Other  |
+| 1       | 30      | 97k    | 48             | Home & Garden | Male   |
+| 2       | 54      | 97k    | 52             | Sports        | Female |
+| 3       | 33      | 81k    | 52             | Electronics   | Male   |
+
+---
+
+## ▶️ Run the App Locally
 
 ```bash
 git clone https://github.com/your-username/customer-segmentation-dashboard.git
@@ -126,12 +129,6 @@ cd customer-segmentation-dashboard
 pip install -r requirements.txt
 streamlit run app.py
 ```
-
----
-
-## 📸 Dashboard Preview
-
-*(Insert screenshot here of Streamlit interface if available)*
 
 ---
 
