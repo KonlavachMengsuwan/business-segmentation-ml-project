@@ -109,7 +109,7 @@ Includes histograms, categorical distributions, scatter plots, and clustering:
 ## ▶️ Run the App Locally
 
 ```bash
-git clone https://github.com/your-username/customer-segmentation-dashboard.git
+git clone https://github.com/KOnlavachMengsuwan/customer-segmentation-dashboard.git
 cd customer-segmentation-dashboard
 pip install -r requirements.txt
 streamlit run app.py
@@ -118,11 +118,7 @@ streamlit run app.py
 ---
 
 ## 📬 Author
-
 Konlavach Mengsuwan  
-📧 [YourEmail@example.com]  
-🌐 [LinkedIn or Website]  
-
 ---
 
 ## 📝 License
