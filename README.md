@@ -1,16 +1,17 @@
 # 🧠 Customer Segmentation Dashboard
 
-This project presents an end-to-end customer segmentation workflow using **unsupervised learning (K-Means)**, complete with **exploratory data analysis (EDA)**, **dimensionality reduction**, and a **Streamlit-powered dashboard**. It aims to support marketing and business strategies by identifying distinct customer profiles from demographic and behavioral data.
+This project presents an end-to-end customer segmentation analysis using unsupervised machine learning (**K-Means clustering**). It includes a complete exploratory data analysis (EDA), clustering with dimensionality reduction, business insight extraction, and an interactive **Streamlit dashboard**.
 
 ---
 
 ## 📊 Features
 
-- Full exploratory data analysis (EDA)
-- K-Means clustering with PCA visualization
-- Segment profiling and insight generation
-- Interactive Streamlit dashboard
-- CSV export of labeled segments
+- Detailed exploratory data analysis (EDA)
+- Visual insights into customer demographics and behaviors
+- K-Means clustering with PCA for dimensionality reduction
+- Cluster profiling and business-oriented interpretation
+- Interactive dashboard using Streamlit
+- Exportable labeled dataset
 
 ---
 
@@ -18,63 +19,94 @@ This project presents an end-to-end customer segmentation workflow using **unsup
 
 ```
 customer-segmentation-dashboard/
-├── app.py                         # Streamlit app
+├── app.py
 ├── data/
-│   └── customer_segments_labeled.csv  # Input data
+│   └── customer_segments_labeled.csv
 ├── summary/
-│   └── customer_segmentation_summary.md  # Segment descriptions
+│   └── customer_segmentation_summary.md
+├── visuals/
+│   ├── eda_age_distribution.png
+│   ├── eda_income_distribution.png
+│   ├── eda_spending_score.png
+│   ├── gender_distribution.png
+│   ├── category_distribution.png
+│   ├── income_vs_spending_by_gender.png
+│   ├── elbow_plot.png
+│   └── pca_cluster_plot.png
 ├── README.md
-├── requirements.txt              # Libraries used
-└── visuals/
-    ├── eda_age_distribution.png
-    ├── eda_income_distribution.png
-    ├── eda_spending_score.png
-    ├── category_distribution.png
-    ├── gender_distribution.png
-    └── elbow_plot.png
+└── requirements.txt
 ```
 
 ---
 
 ## 🔍 Exploratory Data Analysis (EDA)
 
-Here are sample EDA plots generated from the dataset:
-
-### Age Distribution
+### 📈 Age Distribution
 ![Age Distribution](visuals/eda_age_distribution.png)
+- Customers range from early 20s to over 60 years old.
+- Slight concentration in the 20–40 age range, important for lifestyle targeting.
 
-### Income Distribution
+### 💰 Income Distribution
 ![Income Distribution](visuals/eda_income_distribution.png)
+- Right-skewed distribution with most customers earning less than 100,000 EUR.
+- Helps in designing price tiers and promotional strategies.
 
-### Spending Score Distribution
+### 💳 Spending Score Distribution
 ![Spending Score](visuals/eda_spending_score.png)
+- Bimodal tendency suggests at least two spending behavior types—ideal for clustering.
 
-### Gender Distribution
+---
+
+## 🧑‍🤝‍🧑 Categorical Feature Distribution
+
+### 👥 Gender Distribution
 ![Gender Distribution](visuals/gender_distribution.png)
+- A balanced mix of male and female customers.
+- A smaller group identifies as "Other".
 
-### Preferred Category Distribution
-![Preferred Category](visuals/category_distribution.png)
+### 🛍️ Preferred Product Category
+![Preferred Product Category](visuals/category_distribution.png)
+- Popular categories include Groceries, Clothing, and Electronics.
+- Less interest in Automotive and Books—useful for product placement.
 
 ---
 
-## 🧪 Clustering Process
+## 📉 Behavioral Relationship Plots
 
-- **StandardScaler** used for numerical features
-- **OneHotEncoding** for categorical features (`gender`, `preferred_category`)
-- **PCA** applied for 2D visualization
-- **Elbow method** used to find optimal number of clusters
+### 💡 Income vs Spending Score by Gender
+![Income vs Spending Score by Gender](visuals/income_vs_spending_by_gender.png)
+- Shows that income does not always correlate with spending.
+- Some low-income, high-spending customers suggest emotional or urgent purchases.
+- Gender-wise behavior is distributed evenly.
+
+---
+
+## 🔢 Optimal Cluster Selection
+
+### 🔍 Elbow Method for K
 ![Elbow Plot](visuals/elbow_plot.png)
+- Elbow occurs around k = 3 or 4.
+- We selected **k = 4** for meaningful and interpretable segmentation.
 
 ---
 
-## 📌 Segment Insights
+## 🎯 Final Clusters
 
-| Segment | Key Traits                                | Category Focus     | Suggested Strategy                        |
-|---------|--------------------------------------------|--------------------|--------------------------------------------|
-| 0       | Older, loyal, high spenders                | Home & Garden      | Gardening campaigns, loyalty offers       |
-| 1       | Young, mid-income, frequent buyers         | Home & Garden      | Smart home bundles, subscription offers   |
-| 2       | Mature, low frequency, sport-focused       | Sports             | Re-engagement emails, loyalty rewards     |
-| 3       | Young tech buyers, highest frequency       | Electronics        | VIP access, product pre-launch campaigns  |
+### 📌 Customer Segments Visualized in 2D (PCA)
+![PCA Clustering](visuals/pca_cluster_plot.png)
+- PCA reduces multi-dimensional data into 2 components.
+- Clusters appear well-separated in 2D space, validating K-Means.
+
+---
+
+## 🧪 Segment Profiles & Business Insights
+
+| Cluster | Traits                                     | Top Category      | Gender | Strategy                                    |
+|---------|---------------------------------------------|-------------------|--------|---------------------------------------------|
+| 0       | Older, loyal, high spenders                 | Home & Garden     | Other  | Gardening campaigns, loyalty offers         |
+| 1       | Young, mid-income, frequent buyers          | Home & Garden     | Male   | Smart home bundles, subscription offers     |
+| 2       | Mature, lower frequency, sports-focused     | Sports            | Female | Re-engagement emails, loyalty programs      |
+| 3       | Young tech-savvy, highest purchase frequency| Electronics       | Male   | Premium products, early access deals        |
 
 ---
 
@@ -91,7 +123,7 @@ streamlit run app.py
 
 ## 📸 Dashboard Preview
 
-*(Insert screenshot of the live Streamlit dashboard)*
+*(Insert screenshot here of Streamlit interface if available)*
 
 ---
 
